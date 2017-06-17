@@ -53,12 +53,16 @@
         </DataTemplate>
     </Page.Resources>
     <Page.Background>
-        <ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/blue-wallpaper-7.jpg"/>
+        <!--<ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/blue-wallpaper-7.jpg"/>-->
+        <SolidColorBrush Color="#33FFFFFF"
+                         Opacity="0.8" />
     </Page.Background>
 
     <Grid>
         <Grid.Background>
-            <ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/blue-wallpaper-7.jpg"/>
+            <!--<ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/blue-wallpaper-7.jpg"/>-->
+            <SolidColorBrush Color="#33FFFFFF"
+                             Opacity="0.6" />
         </Grid.Background>
 
         <!--No-feeds-to-edit content-->
@@ -74,7 +78,9 @@
             <Grid
                   HorizontalAlignment="Stretch">
                 <Grid.Background>
-                    <ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/blue-wallpaper-7.jpg"/>
+                    <!--<ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/blue-wallpaper-7.jpg"/>-->
+                    <SolidColorBrush Color="#33FFFFFF"
+                                     Opacity="0.8" />
                 </Grid.Background>
                 <Image Width="140"
                        Height="96"
@@ -161,14 +167,16 @@
                       ItemTemplate="{StaticResource EditFeedsListItemTemplate}"
                       ItemContainerStyle="{StaticResource ListViewItemEditFeed}"
                       SelectionChanged="{x:Bind SelectionChanged}" >
-                <ListView.Background>
+                <!--<ListView.Background>
                     <ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/blue-wallpaper-7.jpg"/>
-                </ListView.Background>
+                </ListView.Background>-->
             </ListView>
 
             <CommandBar Grid.Row="4">
                 <CommandBar.Background>
-                    <ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/blue-wallpaper-7.jpg"/>
+                    <!--<ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/blue-wallpaper-7.jpg"/>-->
+                    <SolidColorBrush Color="#33FFFFFF"
+                                     Opacity="0.8" />
                 </CommandBar.Background>
                 <AppBarButton Icon="Add"
                               Label="Add feed"

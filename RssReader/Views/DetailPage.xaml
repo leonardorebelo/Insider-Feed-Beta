@@ -33,9 +33,6 @@
       NavigationCacheMode="Enabled"
       Loaded="PageRoot_Loaded"
       Unloaded="PageRoot_Unloaded">
-    <Page.Background>
-        <ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/blue-wallpaper-7.jpg"/>
-    </Page.Background>
 
     <Page.Transitions>
         <TransitionCollection>
@@ -44,9 +41,6 @@
     </Page.Transitions>
 
     <Grid>
-        <Grid.Background>
-            <ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/blue-wallpaper-7.jpg"/>
-        </Grid.Background>
         <ProgressRing Name="splashProgressRing" IsActive="True" Height="70" Width="70" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20" Foreground="Black"/>
         <WebView x:Name="ArticleWebView" 
                  DefaultBackgroundColor="AliceBlue"/>

@@ -1,0 +1,6 @@
+MainPackage=C:\Users\leona\Desktop\Windows-appsample-rssreader-master\RssReader\bin\ARM\Release\RssReader_2017.9062.1123.0_ARM.appx
+SymbolPackage=C:\Users\leona\Desktop\Windows-appsample-rssreader-master\RssReader\AppPackages\RssReader_2017.9062.1123.0_Test\RssReader_2017.9062.1123.0_ARM.appxsym
+ResourcePack=C:\Users\leona\Desktop\Windows-appsample-rssreader-master\RssReader\bin\ARM\Release\RssReader_2017.9062.1123.0_scale-100.appx
+ResourcePack=C:\Users\leona\Desktop\Windows-appsample-rssreader-master\RssReader\bin\ARM\Release\RssReader_2017.9062.1123.0_scale-125.appx
+ResourcePack=C:\Users\leona\Desktop\Windows-appsample-rssreader-master\RssReader\bin\ARM\Release\RssReader_2017.9062.1123.0_scale-150.appx
+ResourcePack=C:\Users\leona\Desktop\Windows-appsample-rssreader-master\RssReader\bin\ARM\Release\RssReader_2017.9062.1123.0_scale-400.appx

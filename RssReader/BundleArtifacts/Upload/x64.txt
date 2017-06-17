@@ -1,0 +1,2 @@
+MainPackage=C:\Users\leona\Desktop\Windows-appsample-rssreader-master\RssReader\bin\x64\Release\Upload\RssReader_2017.9062.1123.0_x64.appx
+SymbolPackage=C:\Users\leona\Desktop\Windows-appsample-rssreader-master\RssReader\bin\x64\Release\Upload\RssReader_2017.9062.1123.0\RssReader_2017.9062.1123.0_x64.appxsym

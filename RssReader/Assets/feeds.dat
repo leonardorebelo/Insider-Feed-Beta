@@ -1,0 +1,38 @@
+﻿<ArrayOfArrayOfstring xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+    <ArrayOfstring>
+        <string>MSpoweruser</string>
+        <string>http://mspoweruser.com/feed/</string>
+    </ArrayOfstring>
+    <ArrayOfstring>
+        <string>Windows Team</string>
+        <string>https://www.windowsteam.com.br/feed/</string>
+    </ArrayOfstring>
+    <ArrayOfstring>
+        <string>Windows Central</string>
+        <string>https://www.windowscentral.com/rss</string>
+    </ArrayOfstring>
+    <ArrayOfstring>
+        <string>Windows Club</string>
+        <string>http://www.windowsclub.com.br/feed/</string>
+    </ArrayOfstring>
+    <ArrayOfstring>
+        <string>The  Win Central</string>
+        <string>https://thewincentral.com/feed</string>
+    </ArrayOfstring>
+    <ArrayOfstring>
+        <string>ON MSFT</string>
+        <string>https://www.onmsft.com/feed</string>
+    </ArrayOfstring>
+    <ArrayOfstring>
+        <string>Buildfeed</string>
+        <string>https://buildfeed.net/rss/compiled/</string>
+    </ArrayOfstring>
+    <ArrayOfstring>
+        <string>Windowsblogitalia</string>
+        <string>http://windowsblogitalia.com/feed</string>
+    </ArrayOfstring>
+    <ArrayOfstring>
+        <string>Mobile update Br</string>
+        <string>https://mobileupdatebr.com.br/feed/</string>
+    </ArrayOfstring>
+</ArrayOfArrayOfstring>

@@ -29,8 +29,7 @@
 
         <DataTemplate x:Key="NavMenuItemTemplate"
                       x:DataType="local:NavMenuItem">
-            <Grid Opacity="0.5"    >
-
+            <Grid>
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="48" />
@@ -50,7 +49,8 @@
                            Grid.Column="1"
                            Text="{x:Bind Label}"
                            TextWrapping="NoWrap"
-                           Style="{StaticResource BodyTextBlockStyle}" SelectionHighlightColor="#FF137BD3" />
+                           Style="{StaticResource BodyTextBlockStyle}"
+                           SelectionHighlightColor="#FF137BD3" />
             </Grid>
         </DataTemplate>
 
@@ -76,7 +76,8 @@
                               HorizontalAlignment="Center"
                               FontSize="16"
                               ToolTipService.ToolTip="{x:Bind Description, Mode=OneWay}"
-                              Visibility="{x:Bind IsSelectedInNavList, ConverterParameter=Reverse, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" Foreground="Black" />
+                              Visibility="{x:Bind IsSelectedInNavList, ConverterParameter=Reverse, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}"
+                              Foreground="Black" />
                 </Grid>
 
                 <FontIcon x:Name="Glyph"
@@ -93,19 +94,15 @@
                            TextWrapping="NoWrap"
                            MaxWidth="210"
                            TextTrimming="CharacterEllipsis"
-                           Style="{StaticResource BodyTextBlockStyle}" SelectionHighlightColor="#FF29A0CC" />
+                           Style="{StaticResource BodyTextBlockStyle}"
+                           SelectionHighlightColor="#FF29A0CC" />
             </Grid>
         </DataTemplate>
 
     </Page.Resources>
-    <Page.Background>
-        <ImageBrush Stretch="Fill" ImageSource="Assets/blue-wallpaper-7.jpg"/>
-    </Page.Background>
 
     <Grid x:Name="LayoutRoot">
-        <Grid.Background>
-            <ImageBrush Stretch="Fill" ImageSource="Assets/blue-wallpaper-7.jpg"/>
-        </Grid.Background>
+       
         <!-- Adaptive triggers -->
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
@@ -149,18 +146,20 @@
         <SplitView x:Name="RootSplitView"
                    DisplayMode="CompactInline"
                    OpenPaneLength="280"
-                   IsTabStop="False">
+                   IsTabStop="False"
+                   CompactPaneLength="48">
             <SplitView.Background>
-                <ImageBrush Stretch="Fill" ImageSource="Assets/blue-wallpaper-7.jpg"/>
+                <ImageBrush Stretch="Fill"
+                            ImageSource="Assets/blue-wallpaper-7.jpg" />
             </SplitView.Background>
+
+            <SplitView.PaneBackground>
+                <SolidColorBrush Color="White"
+                                 Opacity="0.2" />
+            </SplitView.PaneBackground>
+            
             <SplitView.Pane>
-                <Grid >
-                    <Grid.Background>
-
-                        <ImageBrush Stretch="Fill" ImageSource="Assets/blue-wallpaper-7.jpg"/>
-                    </Grid.Background>
-
-
+                <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition />
                         <RowDefinition Height="Auto" />
@@ -168,14 +167,30 @@
                     </Grid.RowDefinitions>
                     <!-- A custom ListView to display the items in the pane.  
                         The automation Name is set in the ContainerContentChanging event. -->
-                    <controls:NavMenuListView x:Name="FeedsList"
-                                              Margin="0,48,0,0"
+                    <StackPanel>
+                        <!-- Declared last to have it rendered above everything else, but it needs to be the first item in the tab sequence. -->
+                        <ToggleButton x:Name="TogglePaneButton"
+                                      Visibility="{x:Bind ViewModel.IsInDetailsMode, ConverterParameter=Reverse, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}"
+                                      Margin="0"
+                                      TabIndex="1"
+                                      Checked="{x:Bind CheckTogglePaneButtonSizeChanged}"
+                                      Unchecked="{x:Bind CheckTogglePaneButtonSizeChanged}"
+                                      IsChecked="{Binding IsPaneOpen, ElementName=RootSplitView, Mode=TwoWay}"
+                                      AutomationProperties.Name="Menu"
+                                      ToolTipService.ToolTip="Menu"
+                                      Style="{StaticResource SplitViewTogglePaneButtonStyle}"
+                                      Foreground="#FF2B2828"
+                                      Background="{x:Null}" 
+                                      Width="48"
+                                      Height="48"/>
+                        <controls:NavMenuListView x:Name="FeedsList"
                                               ItemsSource="{x:Bind ViewModel.FeedsWithFavorites, Mode=OneWay}"
                                               TabIndex="3"
                                               ContainerContentChanging="FeedsListItemContainerContentChanging"
                                               SelectionChanged="FeedsList_SelectionChanged"
                                               ItemInvoked="FeedsList_ItemInvoked"
                                               ItemTemplate="{StaticResource FeedsListItemTemplate}"     />
+                    </StackPanel>
 
                     <Rectangle x:Name="NavPaneDivider"
                                Grid.Row="1"
@@ -184,7 +199,7 @@
                                Height="1"
                                HorizontalAlignment="Stretch" >
                         <Rectangle.Fill>
-                            <ImageBrush Stretch="Fill" ImageSource="Assets/blue-wallpaper-7.jpg"/>
+                            <SolidColorBrush Color="Blue" />
                         </Rectangle.Fill>
                     </Rectangle>
                     <controls:NavMenuListView x:Name="NavMenuList"
@@ -197,6 +212,7 @@
                                               
                                               ItemTemplate="{StaticResource NavMenuItemTemplate}"  />
                 </Grid>
+                
             </SplitView.Pane>
             <!-- OnNavigatingToPage we synchronize the selected item in the nav menu with the current page.
                  OnNavigatedToPage we move keyboard focus to the first item on the page after it's loaded. -->
@@ -205,7 +221,8 @@
                        Navigating="OnNavigatingToPage"
                        Navigated="OnNavigatedToPage">
                 <Frame.Background>
-                    <ImageBrush Stretch="Fill" ImageSource="Assets/blue-wallpaper-7.jpg"/>
+                    <SolidColorBrush Color="#33FFFFFF"
+                                     Opacity="0.3" />
                 </Frame.Background>
                 <Frame.ContentTransitions>
                     <TransitionCollection>
@@ -217,16 +234,6 @@
             </Frame>
         </SplitView>
 
-        <!-- Declared last to have it rendered above everything else, but it needs to be the first item in the tab sequence. -->
-        <ToggleButton x:Name="TogglePaneButton"
-                      Visibility="{x:Bind ViewModel.IsInDetailsMode, ConverterParameter=Reverse, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}"
-                      Margin="0"
-                      TabIndex="1"
-                      Checked="{x:Bind CheckTogglePaneButtonSizeChanged}"
-                      Unchecked="{x:Bind CheckTogglePaneButtonSizeChanged}"
-                      IsChecked="{Binding IsPaneOpen, ElementName=RootSplitView, Mode=TwoWay}"
-                      AutomationProperties.Name="Menu"
-                      ToolTipService.ToolTip="Menu"
-                      Style="{StaticResource SplitViewTogglePaneButtonStyle}" Foreground="#FF2B2828" Background="{x:Null}" />
+        
     </Grid>
 </Page>

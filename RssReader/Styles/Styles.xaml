@@ -75,7 +75,7 @@
             <SolidColorBrush x:Key="Background60SmokeBrush" Color="{ThemeResource Background60Smoke}" />
             <SolidColorBrush x:Key="Background100CloudBrush" Color="{ThemeResource Background100Cloud}" />
             <SolidColorBrush x:Key="Background100CrimsonBrush" Color="{ThemeResource Background100Crimson}" />
-            <SolidColorBrush x:Key="Background100IndianRedBrush"  Color="{ThemeResource Background100IndianRed}" />
+            <SolidColorBrush x:Key="Background100IndianRedBrush"  Color="Blue" />
             <SolidColorBrush x:Key="Background100SalmonBrush" Color="{ThemeResource Background100Salmon}" />
             <SolidColorBrush x:Key="Background40BlackBrush" Color="{ThemeResource Background40Black}" />
             <SolidColorBrush x:Key="Background20BlackBrush" Color="{ThemeResource Background20Black}" />
@@ -147,7 +147,7 @@
             <SolidColorBrush x:Key="Background60SmokeBrush" Color="{ThemeResource Background60Smoke}"/>
             <SolidColorBrush x:Key="Background100CloudBrush" Color="{ThemeResource Background100Cloud}"/>
             <SolidColorBrush x:Key="Background100CrimsonBrush" Color="{ThemeResource Background100Crimson}"/>
-            <SolidColorBrush x:Key="Background100IndianRedBrush" Color="{ThemeResource Background100IndianRed}"/>
+            <SolidColorBrush x:Key="Background100IndianRedBrush" Color="Blue"/>
             <SolidColorBrush x:Key="Background100SalmonBrush" Color="{ThemeResource Background100Salmon}"/>
             <SolidColorBrush x:Key="Background40BlackBrush" Color="{ThemeResource Background40Black}"/>
             <SolidColorBrush x:Key="Background20BlackBrush" Color="{ThemeResource Background20Black}"/>
@@ -219,7 +219,7 @@
             <SolidColorBrush x:Key="Background60SmokeBrush" Color="{ThemeResource Background60Smoke}" />
             <SolidColorBrush x:Key="Background100CloudBrush" Color="{ThemeResource Background100Cloud}" />
             <SolidColorBrush x:Key="Background100CrimsonBrush" Color="{ThemeResource Background100Crimson}" />
-            <SolidColorBrush x:Key="Background100IndianRedBrush" Color="{ThemeResource Background100IndianRed}" />
+            <SolidColorBrush x:Key="Background100IndianRedBrush" Color="Blue" />
             <SolidColorBrush x:Key="Background100SalmonBrush" Color="{ThemeResource Background100Salmon}" />
             <SolidColorBrush x:Key="Background40BlackBrush" Color="{ThemeResource Background40Black}" />
             <SolidColorBrush x:Key="Background20BlackBrush" Color="{ThemeResource Background20Black}" />
@@ -312,7 +312,7 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="LayoutRoot"
                                                                        Storyboard.TargetProperty="(Grid.Background)">
                                             <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{ThemeResource Background100IndianRed}" />
+                                                                    Value="Blue" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
                                                                        Storyboard.TargetProperty="Foreground">
@@ -346,7 +346,7 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="LayoutRoot"
                                                                        Storyboard.TargetProperty="(Grid.Background)">
                                             <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{ThemeResource Background100IndianRed}" />
+                                                                    Value="Blue" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
                                                                        Storyboard.TargetProperty="Foreground">
@@ -782,7 +782,7 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BorderBackground"
                                                                        Storyboard.TargetProperty="Fill">
                                             <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{ThemeResource Background100IndianRedBrush}" />
+                                                                    Value="Blue" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
                                                                        Storyboard.TargetProperty="Foreground">
@@ -985,7 +985,7 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background"
                                                                        Storyboard.TargetName="RootGrid">
                                             <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{ThemeResource Background100IndianRedBrush}" />
+                                                                    Value="Blue" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground"
                                                                        Storyboard.TargetName="ContentPresenter">
@@ -1077,7 +1077,7 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground"
                                                                        Storyboard.TargetName="ContentPresenter">
                                             <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{ThemeResource Foreground100IndianRedBrush}" />
+                                                                    Value="Blue" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="FontSize"
                                                                        Storyboard.TargetName="ContentPresenter">
@@ -1150,7 +1150,7 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground"
                                                                        Storyboard.TargetName="ContentPresenter">
                                             <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{ThemeResource Foreground100IndianRedBrush}" />
+                                                                    Value="Blue" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="FontSize"
                                                                        Storyboard.TargetName="ContentPresenter">
@@ -1280,7 +1280,7 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentBorder"
                                                                        Storyboard.TargetProperty="Background">
                                             <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{ThemeResource Background100IndianRedBrush}" />
+                                                                    Value="Blue" />
                                         </ObjectAnimationUsingKeyFrames>
 
                                         <PointerDownThemeAnimation TargetName="ContentPresenter" />
@@ -1325,13 +1325,13 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="MultiSelectSquare"
                                                                        Storyboard.TargetProperty="Background">
                                             <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{ThemeResource Background100IndianRedBrush}" />
+                                                                    Value="Blue" />
                                         </ObjectAnimationUsingKeyFrames>
 
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="MultiSelectSquare"
                                                                        Storyboard.TargetProperty="BorderBrush">
                                             <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{ThemeResource Background100IndianRedBrush}" />
+                                                                    Value="Blue" />
                                         </ObjectAnimationUsingKeyFrames>
 
                                         <DoubleAnimation Storyboard.TargetName="MultiSelectCheck"
@@ -1369,7 +1369,7 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="MultiSelectCheck"
                                                                        Storyboard.TargetProperty="Foreground">
                                             <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{ThemeResource Foreground100IndianRedBrush}" />
+                                                                    Value="Blue" />
                                         </ObjectAnimationUsingKeyFrames>
 
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="MultiSelectSquare"
@@ -1397,7 +1397,7 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BorderBackground"
                                                                        Storyboard.TargetProperty="Fill">
                                             <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{ThemeResource Background100IndianRedBrush}" />
+                                                                    Value="Blue" />
                                         </ObjectAnimationUsingKeyFrames>
 
                                         <PointerDownThemeAnimation TargetName="ContentPresenter" />
@@ -1702,7 +1702,7 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BorderBackground"
                                                                        Storyboard.TargetProperty="Fill">
                                             <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{ThemeResource Background100CrimsonBrush}" />
+                                                                    Value="Blue" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
                                                                        Storyboard.TargetProperty="Background">
@@ -1721,7 +1721,7 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BorderBackground"
                                                                        Storyboard.TargetProperty="Fill">
                                             <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{ThemeResource Background100IndianRedBrush}" />
+                                                                    Value="LightBlue" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
                                                                        Storyboard.TargetProperty="Background">
@@ -2083,7 +2083,7 @@
                                                                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background"
                                                                                                    Storyboard.TargetName="ButtonLayoutGrid">
                                                                         <DiscreteObjectKeyFrame KeyTime="0"
-                                                                                                Value="{ThemeResource Background100IndianRed}" />
+                                                                                                Value="Blue" />
                                                                     </ObjectAnimationUsingKeyFrames>
                                                                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground"
                                                                                                    Storyboard.TargetName="GlyphElement">
@@ -2323,7 +2323,7 @@
     <Style x:Key="ProgressBarStyle1"
                TargetType="ProgressBar">
             <Setter Property="Foreground"
-                    Value="{ThemeResource Foreground100IndianRedBrush}" />
+                    Value="Blue" />
             <Setter Property="Background"
                     Value="{ThemeResource SystemControlBackgroundBaseLowBrush}" />
             <Setter Property="BorderThickness"

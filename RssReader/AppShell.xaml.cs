@@ -34,6 +34,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
+using Windows.UI;
 
 namespace RssReader
 {
@@ -315,5 +316,6 @@ namespace RssReader
         /// </summary>
         private void FeedsListItemContainerContentChanging(ListViewBase sender, ContainerContentChangingEventArgs args) =>
             UpdateAutomationName<FeedViewModel>(args, ((FeedViewModel)args.Item)?.Name);
+
     }
 }

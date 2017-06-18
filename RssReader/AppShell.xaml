@@ -29,7 +29,7 @@
 
         <DataTemplate x:Key="NavMenuItemTemplate"
                       x:DataType="local:NavMenuItem">
-            <Grid>
+            <Grid HorizontalAlignment="Left">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="48" />
@@ -42,8 +42,8 @@
                 <FontIcon x:Name="Glyph"
                           Glyph="{x:Bind SymbolAsChar}"
                           VerticalAlignment="Center"
-                          HorizontalAlignment="Center"
-                          FontSize="16"
+                          HorizontalAlignment="Left"
+                          FontSize="20"
                           ToolTipService.ToolTip="{x:Bind Label}" />
                 <TextBlock x:Name="Text"
                            Grid.Column="1"
@@ -65,16 +65,16 @@
                     <!--Error icon when selected.-->
                     <FontIcon Glyph="&#xE7BA;"
                               VerticalAlignment="Center"
-                              HorizontalAlignment="Center"
-                              FontSize="16"
+                              HorizontalAlignment="Left"
+                              FontSize="20"
                               ToolTipService.ToolTip="{x:Bind Description, Mode=OneWay}"
                               Visibility="{x:Bind IsSelectedInNavList, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
 
                     <!--Error icon when unselected.-->
                     <FontIcon Glyph="&#xE7BA;"
                               VerticalAlignment="Center"
-                              HorizontalAlignment="Center"
-                              FontSize="16"
+                              HorizontalAlignment="Left"
+                              FontSize="20"
                               ToolTipService.ToolTip="{x:Bind Description, Mode=OneWay}"
                               Visibility="{x:Bind IsSelectedInNavList, ConverterParameter=Reverse, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}"
                               Foreground="Black" />
@@ -83,8 +83,8 @@
                 <FontIcon x:Name="Glyph"
                           Glyph="{x:Bind SymbolAsChar, Mode=OneWay}"
                           VerticalAlignment="Center"
-                          HorizontalAlignment="Center"
-                          FontSize="16"
+                          HorizontalAlignment="Left"
+                          FontSize="20"
                           ToolTipService.ToolTip="{x:Bind Description, Mode=OneWay}"
                           Visibility="{x:Bind IsInError, ConverterParameter=Reverse, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
 
@@ -154,12 +154,11 @@
             </SplitView.Background>
 
             <SplitView.PaneBackground>
-                <SolidColorBrush Color="White"
-                                 Opacity="0.2" />
+                <SolidColorBrush Color="#FFB6C0CB" 
+                                 Opacity="0.90 "/>
             </SplitView.PaneBackground>
-            
             <SplitView.Pane>
-                <Grid>
+                <Grid Margin="0,48,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition />
                         <RowDefinition Height="Auto" />
@@ -167,30 +166,17 @@
                     </Grid.RowDefinitions>
                     <!-- A custom ListView to display the items in the pane.  
                         The automation Name is set in the ContainerContentChanging event. -->
-                    <StackPanel>
-                        <!-- Declared last to have it rendered above everything else, but it needs to be the first item in the tab sequence. -->
-                        <ToggleButton x:Name="TogglePaneButton"
-                                      Visibility="{x:Bind ViewModel.IsInDetailsMode, ConverterParameter=Reverse, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}"
-                                      Margin="0"
-                                      TabIndex="1"
-                                      Checked="{x:Bind CheckTogglePaneButtonSizeChanged}"
-                                      Unchecked="{x:Bind CheckTogglePaneButtonSizeChanged}"
-                                      IsChecked="{Binding IsPaneOpen, ElementName=RootSplitView, Mode=TwoWay}"
-                                      AutomationProperties.Name="Menu"
-                                      ToolTipService.ToolTip="Menu"
-                                      Style="{StaticResource SplitViewTogglePaneButtonStyle}"
-                                      Foreground="#FF2B2828"
-                                      Background="{x:Null}" 
-                                      Width="48"
-                                      Height="48"/>
+                   
+                       
+                        
                         <controls:NavMenuListView x:Name="FeedsList"
                                               ItemsSource="{x:Bind ViewModel.FeedsWithFavorites, Mode=OneWay}"
                                               TabIndex="3"
                                               ContainerContentChanging="FeedsListItemContainerContentChanging"
                                               SelectionChanged="FeedsList_SelectionChanged"
                                               ItemInvoked="FeedsList_ItemInvoked"
-                                              ItemTemplate="{StaticResource FeedsListItemTemplate}"     />
-                    </StackPanel>
+                                              ItemTemplate="{StaticResource FeedsListItemTemplate}"/>
+                    
 
                     <Rectangle x:Name="NavPaneDivider"
                                Grid.Row="1"
@@ -217,13 +203,9 @@
             <!-- OnNavigatingToPage we synchronize the selected item in the nav menu with the current page.
                  OnNavigatedToPage we move keyboard focus to the first item on the page after it's loaded. -->
             <Frame x:Name="AppShellFrame"
-                       Margin="0"
-                       Navigating="OnNavigatingToPage"
-                       Navigated="OnNavigatedToPage">
-                <Frame.Background>
-                    <SolidColorBrush Color="#33FFFFFF"
-                                     Opacity="0.3" />
-                </Frame.Background>
+                   Margin="0"
+                   Navigating="OnNavigatingToPage"
+                   Navigated="OnNavigatedToPage">
                 <Frame.ContentTransitions>
                     <TransitionCollection>
                         <NavigationThemeTransition>
@@ -233,7 +215,21 @@
                 </Frame.ContentTransitions>
             </Frame>
         </SplitView>
+        <!-- Declared last to have it rendered above everything else, but it needs to be the first item in the tab sequence. -->
+        <ToggleButton x:Name="TogglePaneButton"
+                      Visibility="{x:Bind ViewModel.IsInDetailsMode, ConverterParameter=Reverse, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}"
+                      TabIndex="1"
+                      Checked="{x:Bind CheckTogglePaneButtonSizeChanged}"
+                      Unchecked="{x:Bind CheckTogglePaneButtonSizeChanged}"
+                      IsChecked="{Binding IsPaneOpen, ElementName=RootSplitView, Mode=TwoWay}"
+                      AutomationProperties.Name="Menu"
+                      ToolTipService.ToolTip="Menu"
+                      Style="{StaticResource SplitViewTogglePaneButtonStyle}"
+                      Foreground="#FF2B2828"
+                      Background="{x:Null}"
+                      Width="48"
+                      Height="48"
+                      />
 
-        
     </Grid>
 </Page>

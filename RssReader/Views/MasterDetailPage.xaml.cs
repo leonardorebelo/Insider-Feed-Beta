@@ -99,7 +99,7 @@ namespace RssReader.Views
             }
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected  override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 
@@ -130,6 +130,8 @@ namespace RssReader.Views
 
                 UpdateForVisualState(AdaptiveStates.CurrentState);
             }
+
+            
         }
 
         private void AdaptiveStates_CurrentStateChanged(object sender, VisualStateChangedEventArgs e)

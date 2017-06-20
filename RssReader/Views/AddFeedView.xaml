@@ -36,15 +36,8 @@
     <Page.Resources>
         <common:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </Page.Resources>
-    <Page.Background>
-        <ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/blue-wallpaper-7.jpg"/>
-    </Page.Background>
 
-    <Grid Margin="0,0,-150,0">
-        <Grid.Background>
-            <ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/blue-wallpaper-7.jpg"/>
-        </Grid.Background>
-
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -53,23 +46,19 @@
         </Grid.RowDefinitions>
 
         <controls:PageHeader>
-            <controls:PageHeader.Background>
-                <ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/blue-wallpaper-7.jpg"/>
-            </controls:PageHeader.Background>
             <controls:PageHeader.HeaderContent>
                 <TextBlock Text="Add a feed"
-                           Foreground="{ThemeResource Foreground100CrimsonBrush}"
-                           Style="{ThemeResource SubtitleTextBlockStyle}" />
+                           Style="{ThemeResource SubtitleTextBlockStyle}"
+                           FontWeight="Bold"/>
             </controls:PageHeader.HeaderContent>
         </controls:PageHeader>
 
         <Rectangle Grid.Row="1"
                    Margin="24,0"
                    Height="1"
-                   HorizontalAlignment="Stretch" >
-            <Rectangle.Fill>
-                <ImageBrush ImageSource="ms-appx:///Assets/blue-wallpaper-7.jpg" Stretch="Fill"/>
-            </Rectangle.Fill>
+                   HorizontalAlignment="Stretch" 
+                   Fill="{ThemeResource SystemControlForegroundAccentBrush}">
+            
         </Rectangle>
 
         <TextBlock x:Name="AddRSSHelp"
@@ -78,13 +67,10 @@
                    Text="Enter or paste the URL to a publication's RSS Feed below to add it to your list."
                    TextWrapping="Wrap"
                    VerticalAlignment="Top"
-                   Foreground="{ThemeResource Foreground100DimGrayBrush}"
                    Style="{StaticResource CaptionTextBlockStyle}" />
 
         <Grid Grid.Row="3">
-            <Grid.Background>
-                <ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/blue-wallpaper-7.jpg"/>
-            </Grid.Background>
+           
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -141,10 +127,10 @@
                      Style="{StaticResource TextBoxStyle1}" />
 
             <Grid Grid.Row="3"
-                  Margin="24">
+                  Margin="20">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="7*" />
-                    <ColumnDefinition Width="10*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
                 </Grid.ColumnDefinitions>
 
                 <Button x:Name="SaveAndLeaveButton"
@@ -168,7 +154,6 @@
 
             <!--Success message; disappears after five seconds.-->
             <Grid Grid.Row="4"
-                  Margin="24,6,24,0"
                   Visibility="{x:Bind ViewModel.IsFeedAddedMessageShowing, Mode=OneWay, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="20" />

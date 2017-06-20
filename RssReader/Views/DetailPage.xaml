@@ -41,16 +41,16 @@
     </Page.Transitions>
 
     <Grid>
-        <ProgressRing Name="splashProgressRing" IsActive="True" Height="70" Width="70" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20" Foreground="Black"/>
-        <WebView x:Name="ArticleWebView" 
-                 DefaultBackgroundColor="AliceBlue"/>
-        <CommandBar>
-            <CommandBar.Content>
-                <Grid/>
-            </CommandBar.Content>
-            <AppBarButton Icon="Accept" Label="AppBarButton"/>
-            <AppBarButton Icon="Cancel" Label="AppBarButton"/>
-        </CommandBar>
+        <ProgressRing Name="splashProgressRing" 
+                      IsActive="True"
+                      Height="70"
+                      Width="70" 
+                      HorizontalAlignment="Center" 
+                      VerticalAlignment="Center" 
+                      Margin="20" 
+                      Foreground="{ThemeResource DefaultTextForegroundThemeBrush}"/>
+        <WebView x:Name="ArticleWebView"/>
+        
 
     </Grid>
 </Page>

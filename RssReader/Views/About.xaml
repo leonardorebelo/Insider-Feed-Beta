@@ -5,9 +5,10 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
       xmlns:Behaviors="using:Microsoft.Toolkit.Uwp.UI.Animations.Behaviors"
+      xmlns:controls="using:RssReader.Controls"
       x:Class="RssReader.Views.About"
       mc:Ignorable="d">
-
+    <ScrollViewer>
     <Grid>
         <Grid.Resources>
             <Style TargetType="TextBlock">
@@ -24,35 +25,79 @@
         </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        
-        <TextBlock Text="About" 
-                   FontSize="32"
-                   HorizontalAlignment="Center"/>
-        <Grid Grid.Row="1">
-            <StackPanel>
-        <TextBlock Style="{StaticResource mainText}"
-                   Grid.Row="1" 
-                   Text="Developed By: Leonardo Rodrigues"/>
-        <TextBlock Text="Designed By: Colin Kiama" />
-        <TextBlock Style="{StaticResource mainText}"
-            Text="Special Thanks To: Mspoweruser, Windows Team ,Windows Central ,Windows Club ,The Win Central ,On Msft ,Buildfeed ,WindowsBlogItalia " />
+
+        <controls:PageHeader>
+            <controls:PageHeader.HeaderContent>
+                <TextBlock Text="About"
+                           Style="{ThemeResource SubtitleTextBlockStyle}"
+                           FontWeight="Bold" />
+            </controls:PageHeader.HeaderContent>
+        </controls:PageHeader>
+        <Rectangle Grid.Row="1"
+                   Margin="24,0"
+                   Height="1"
+                   HorizontalAlignment="Stretch"
+                   Fill="{ThemeResource SystemControlForegroundAccentBrush}">
+
+        </Rectangle>
+        <Grid Grid.Row="2">
+            <StackPanel Margin="12">
+        <TextBlock Style="{StaticResource BodyTextBlockStyle}"
+                   Grid.Row="2" 
+                   Text="Developed By: Leonardo Rodrigues"
+                  Margin="10" />
+        <TextBlock Text="Designed By: Colin Kiama" 
+                   Style="{StaticResource BodyTextBlockStyle}"
+                   Margin="10,0,0,0"/>
+                <StackPanel>
+                    <TextBlock Text="Who Also designed and developed the app 'Track Goals' " 
+                               TextWrapping="Wrap"
+                               Style="{StaticResource CaptionTextBlockStyle}"
+                               Margin="10,3,0,0"/>
+                    <HyperlinkButton Content="Download it here!"
+                                     Margin="10,2,0,0"
+                                     NavigateUri="ms-windows-store://pdp/?productid=9nblggh52rsb"
+                                     Foreground="{ThemeResource DefaultTextForegroundThemeBrush}"/>
+                </StackPanel>
+                <TextBlock Style="{StaticResource BodyTextBlockStyle}"
+            Text="Special Thanks To: Mspoweruser, Windows Team ,Windows Central ,Windows Club ,The Win Central ,On Msft ,Buildfeed ,WindowsBlogItalia"
+                   Margin="10,50,0,0"/>
             </StackPanel>
         </Grid>
+            <StackPanel  Grid.Row="3">
+                <Image Height="300"
+                       Width="300"
+                       Source="ms-appx:///Assets/Square150x150Logo.scale-200.png"
+                       Visibility="Visible"
+                       Canvas.ZIndex="50"
+                       Margin="0,0,0,-80"/>
+                <TextBlock Text="Insider Feed - All your favorite Windows sites. All in one place." 
+                           Style="{ThemeResource CaptionTextBlockStyle}"
+                           TextWrapping="WrapWholeWords"
+                           TextAlignment="Center"/>
+            </StackPanel>
+            
+        
         <StackPanel VerticalAlignment="Bottom"
-                    Grid.RowSpan="3"
-                    Margin="10">
+                    Grid.RowSpan="4"
+                    Margin="10"
+                    Grid.Row="4">
             <HyperlinkButton Content="Rate The App"
                              HorizontalAlignment="Left"
                              VerticalAlignment="Top"
-                             NavigateUri="ms-windows-store://pdp/?productid=9p3vsk8f1zt3"/>
+                             NavigateUri="ms-windows-store://pdp/?productid=9p3vsk8f1zt3"
+                             Foreground="{ThemeResource DefaultTextForegroundThemeBrush}"/>
             <HyperlinkButton Content="Contact"
                              HorizontalAlignment="Left"
                              VerticalAlignment="Top"
                              NavigateUri="mailto:Leonardo.rebelo@outlook.pt"
-                             />
+                             Foreground="{ThemeResource DefaultTextForegroundThemeBrush}"/>
         </StackPanel>
     </Grid>
+    </ScrollViewer>
 </Page>

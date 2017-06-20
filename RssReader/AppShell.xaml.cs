@@ -35,6 +35,11 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI;
+using Windows.UI.Composition;
+using Windows.UI.Xaml.Hosting;
+using System.Numerics;
+using System;
+using Microsoft.Graphics.Canvas.Effects;
 
 namespace RssReader
 {
@@ -44,6 +49,10 @@ namespace RssReader
     /// </summary>
     public sealed partial class AppShell : Page
     {
+        Compositor _compositor;
+        SpriteVisual _hostSprite;
+        SpriteVisual blurSprite;
+
         public static AppShell Current = null;
 
         public MainViewModel ViewModel { get; } = new MainViewModel();
@@ -252,6 +261,58 @@ namespace RssReader
                 var control = (Page)e.Content;
                 control.Loaded += Page_Loaded;
             }
+            var qualifiers = Windows.ApplicationModel.Resources.Core.ResourceContext.GetForCurrentView().QualifierValues;
+
+            if (qualifiers.ContainsKey("DeviceFamily") && qualifiers["DeviceFamily"] == "Desktop" && Windows.Foundation.Metadata.ApiInformation.IsMethodPresent("Windows.UI.Composition.Compositor", "CreateHostBackdropBrush"))
+            {
+                Thickness toggleButtonMargin = TogglePaneButton.Margin;
+                toggleButtonMargin.Top = 56;
+                toggleButtonMargin.Bottom = 0;
+                toggleButtonMargin.Left = 0;
+                toggleButtonMargin.Right = 0;
+                TogglePaneButton.Margin = toggleButtonMargin;
+
+                Thickness burgerMenuMargin = burgerMenu.Margin;
+                burgerMenuMargin.Top = 104;
+                burgerMenuMargin.Bottom = 0;
+                burgerMenuMargin.Left = 0;
+                burgerMenuMargin.Right = 0;
+                burgerMenu.Margin = burgerMenuMargin;
+                applyAcrylicAccent(MainGrid);
+
+            }
+            else
+            {
+                burgerMenuColor.Opacity = 0.8;
+            }
+            applyLightAcrylicAccent(hamburgerMenuGrid);
+
+            
+
+        }
+
+        private void applyLightAcrylicAccent(Panel panel)
+        {
+            _compositor = ElementCompositionPreview.GetElementVisual(this).Compositor;
+            blurSprite = _compositor.CreateSpriteVisual();
+            blurSprite.Size = new Vector2((float)panel.ActualWidth, (float)panel.ActualHeight);
+
+            ElementCompositionPreview.SetElementChildVisual(panel, blurSprite);
+
+            var gaussianBlurEffect = new GaussianBlurEffect()
+            {
+                Name = "Blur",
+                BlurAmount = 2.0f,
+                BorderMode = EffectBorderMode.Hard
+            };
+            gaussianBlurEffect.Source = new CompositionEffectSourceParameter("source");
+
+            var gaussianBlurEffectFactory = _compositor.CreateEffectFactory(gaussianBlurEffect);
+            var gaussianBlurBrush = gaussianBlurEffectFactory.CreateBrush();
+            var backdrop = _compositor.CreateBackdropBrush();
+
+            gaussianBlurBrush.SetSourceParameter("source", backdrop);
+            blurSprite.Brush = gaussianBlurBrush;
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -263,6 +324,7 @@ namespace RssReader
         #endregion
 
         public Rect TogglePaneButtonRect { get; private set; }
+        public SpriteVisual HostSprite { get => _hostSprite; set => _hostSprite = value; }
 
         /// <summary>
         /// An event to notify listeners when the hamburger button may occlude other content in the app.
@@ -285,7 +347,11 @@ namespace RssReader
             TogglePaneButtonRectChanged?.Invoke(this, this.TogglePaneButtonRect);
         }
 
-        private void Root_SizeChanged(object sender, SizeChangedEventArgs e) => CheckTogglePaneButtonSizeChanged();
+        private void Root_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            CheckTogglePaneButtonSizeChanged();
+            
+        }
 
         /// <summary>
         /// Enable accessibility on each nav menu item by setting the AutomationProperties.Name on each container
@@ -317,5 +383,50 @@ namespace RssReader
         private void FeedsListItemContainerContentChanging(ListViewBase sender, ContainerContentChangingEventArgs args) =>
             UpdateAutomationName<FeedViewModel>(args, ((FeedViewModel)args.Item)?.Name);
 
+
+        private void applyAcrylicAccent(Panel panel)
+        {
+            _compositor = ElementCompositionPreview.GetElementVisual(this).Compositor;
+            HostSprite = _compositor.CreateSpriteVisual();
+            HostSprite.Size = new Vector2((float)panel.ActualWidth, (float)panel.ActualHeight);
+            ElementCompositionPreview.SetElementChildVisual(panel, HostSprite);
+            HostSprite.Opacity = 0.8f;
+
+
+
+            HostSprite.Brush = _compositor.CreateHostBackdropBrush();
+
+
+        }
+
+       
+
+        private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (_hostSprite != null)
+                _hostSprite.Size = e.NewSize.ToVector2();
+            
+        }
+
+        private void hamburgerMenu_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (blurSprite != null)
+                blurSprite.Size = e.NewSize.ToVector2();
+        }
+
+        private void TogglePaneButton_Click(object sender, RoutedEventArgs e)
+        {
+            //if(TogglePaneButton.IsChecked == true)
+            //{
+            //    changingColor.Opacity = 0.7;
+            //}
+            //else
+            //{
+
+            //    changingColor.Opacity = 0.2;
+            //}
+        }
+
+      
     }
 }

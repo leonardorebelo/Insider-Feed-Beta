@@ -134,7 +134,7 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="RootSplitView.DisplayMode"
-                                Value="Overlay" />
+                                Value="CompactOverlay" />
                         <Setter Target="RootSplitView.IsPaneOpen"
                                 Value="False" />
                     </VisualState.Setters>
@@ -143,79 +143,98 @@
         </VisualStateManager.VisualStateGroups>
 
         <!-- Top-level navigation menu + app content -->
-        <SplitView x:Name="RootSplitView"
-                   DisplayMode="CompactInline"
-                   OpenPaneLength="280"
-                   IsTabStop="False"
-                   CompactPaneLength="48">
-            <SplitView.Background>
-                <ImageBrush Stretch="Fill"
-                            ImageSource="Assets/blue-wallpaper-7.jpg" />
-            </SplitView.Background>
-
-            <SplitView.PaneBackground>
-                <SolidColorBrush Color="#FFB6C0CB" 
-                                 Opacity="0.90 "/>
-            </SplitView.PaneBackground>
-            <SplitView.Pane>
-                <Grid Margin="0,48,0,0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <!-- A custom ListView to display the items in the pane.  
-                        The automation Name is set in the ContainerContentChanging event. -->
+        <Grid Name="parentGrid">
+            <RelativePanel x:Name="MainGrid"
+                           SizeChanged="Page_SizeChanged"
+                           Opacity="1"
+                           Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"/>
+           
+            
+            <SplitView x:Name="RootSplitView"
+                       DisplayMode="CompactInline"
+                       OpenPaneLength="280"
+                       IsTabStop="False"
+                       CompactPaneLength="48">
+                
+                <Grid>
                    
+                    <Frame x:Name="AppShellFrame"
+                           Margin="0"
+                           Navigating="OnNavigatingToPage"
+                           Navigated="OnNavigatedToPage">
+                        <Frame.ContentTransitions>
+                            <TransitionCollection>
+                                <NavigationThemeTransition>
+                                    <EntranceNavigationTransitionInfo />
+                                </NavigationThemeTransition>
+                            </TransitionCollection>
+                        </Frame.ContentTransitions>
+                    </Frame>
+                </Grid>
+                <SplitView.PaneBackground>
+                    <SolidColorBrush Color="{ThemeResource SystemChromeMediumColor}" Opacity="0.1"
+                                     x:Name="burgerMenuColor"/>
+                </SplitView.PaneBackground>
+                <SplitView.Pane>
+                    <Grid>
+                    <RelativePanel Grid.RowSpan="3"
+                                   x:Name="hamburgerMenuGrid"
+                                   SizeChanged="hamburgerMenu_SizeChanged">
+
+                    </RelativePanel>
+                    <RelativePanel Grid.Column="0"
+                                   Width="{Binding ElementName=hamburgerMenuGrid,Path=Width}"
+                                   Background="#28000000"
+                                   Grid.RowSpan="3" />
+                    <Grid Margin="0,48,0,0"
+                          Name="burgerMenu">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <!-- A custom ListView to display the items in the pane.  
+                        The automation Name is set in the ContainerContentChanging event. -->
+
+                        
                        
                         
                         <controls:NavMenuListView x:Name="FeedsList"
-                                              ItemsSource="{x:Bind ViewModel.FeedsWithFavorites, Mode=OneWay}"
-                                              TabIndex="3"
-                                              ContainerContentChanging="FeedsListItemContainerContentChanging"
-                                              SelectionChanged="FeedsList_SelectionChanged"
-                                              ItemInvoked="FeedsList_ItemInvoked"
-                                              ItemTemplate="{StaticResource FeedsListItemTemplate}"/>
-                    
+                                                  ItemsSource="{x:Bind ViewModel.FeedsWithFavorites, Mode=OneWay}"
+                                                  TabIndex="3"
+                                                  ContainerContentChanging="FeedsListItemContainerContentChanging"
+                                                  SelectionChanged="FeedsList_SelectionChanged"
+                                                  ItemInvoked="FeedsList_ItemInvoked"
+                                                  ItemTemplate="{StaticResource FeedsListItemTemplate}" />
+                        
 
-                    <Rectangle x:Name="NavPaneDivider"
-                               Grid.Row="1"
-                               Margin="0"
-                               Width="280"
-                               Height="1"
-                               HorizontalAlignment="Stretch" >
-                        <Rectangle.Fill>
-                            <SolidColorBrush Color="Blue" />
-                        </Rectangle.Fill>
-                    </Rectangle>
-                    <controls:NavMenuListView x:Name="NavMenuList"
-                                              Grid.Row="2"
-                                              Margin="0"
-                                              ItemsSource="{x:Bind NavList}"
-                                              TabIndex="4"
-                                              ContainerContentChanging="NavMenuItemContainerContentChanging"
-                                              ItemInvoked="NavMenuList_ItemInvoked"
-                                              
-                                              ItemTemplate="{StaticResource NavMenuItemTemplate}"  />
-                </Grid>
-                
-            </SplitView.Pane>
-            <!-- OnNavigatingToPage we synchronize the selected item in the nav menu with the current page.
+                        <Rectangle x:Name="NavPaneDivider"
+                                   Grid.Row="1"
+                                   Margin="0"
+                                   Width="280"
+                                   Height="1"
+                                   HorizontalAlignment="Stretch"
+                                   Fill="{ThemeResource DefaultTextForegroundThemeBrush}">
+                        </Rectangle>
+                        <controls:NavMenuListView x:Name="NavMenuList"
+                                                  Grid.Row="2"
+                                                  Margin="0"
+                                                  ItemsSource="{x:Bind NavList}"
+                                                  TabIndex="4"
+                                                  ContainerContentChanging="NavMenuItemContainerContentChanging"
+                                                  ItemInvoked="NavMenuList_ItemInvoked"
+                                                  ItemTemplate="{StaticResource NavMenuItemTemplate}" />
+                   
+                    </Grid>
+                    </Grid>
+                </SplitView.Pane>
+                <!-- OnNavigatingToPage we synchronize the selected item in the nav menu with the current page.
                  OnNavigatedToPage we move keyboard focus to the first item on the page after it's loaded. -->
-            <Frame x:Name="AppShellFrame"
-                   Margin="0"
-                   Navigating="OnNavigatingToPage"
-                   Navigated="OnNavigatedToPage">
-                <Frame.ContentTransitions>
-                    <TransitionCollection>
-                        <NavigationThemeTransition>
-                            <EntranceNavigationTransitionInfo />
-                        </NavigationThemeTransition>
-                    </TransitionCollection>
-                </Frame.ContentTransitions>
-            </Frame>
-        </SplitView>
-        <!-- Declared last to have it rendered above everything else, but it needs to be the first item in the tab sequence. -->
+               
+            </SplitView>
+            <!-- Declared last to have it rendered above everything else, but it needs to be the first item in the tab sequence. -->
+           
+        </Grid>
         <ToggleButton x:Name="TogglePaneButton"
                       Visibility="{x:Bind ViewModel.IsInDetailsMode, ConverterParameter=Reverse, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}"
                       TabIndex="1"
@@ -224,12 +243,11 @@
                       IsChecked="{Binding IsPaneOpen, ElementName=RootSplitView, Mode=TwoWay}"
                       AutomationProperties.Name="Menu"
                       ToolTipService.ToolTip="Menu"
-                      Style="{StaticResource SplitViewTogglePaneButtonStyle}"
-                      Foreground="#FF2B2828"
-                      Background="{x:Null}"
+                      Style="{ThemeResource SplitViewTogglePaneButtonStyle}"
                       Width="48"
                       Height="48"
-                      />
-
+                      Click="TogglePaneButton_Click"
+                      Margin="0,0,0,0">
+        </ToggleButton>
     </Grid>
 </Page>

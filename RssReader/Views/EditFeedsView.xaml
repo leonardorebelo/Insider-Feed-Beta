@@ -52,18 +52,9 @@
             </Grid>
         </DataTemplate>
     </Page.Resources>
-    <Page.Background>
-        <!--<ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/blue-wallpaper-7.jpg"/>-->
-        <SolidColorBrush Color="#33FFFFFF"
-                         Opacity="0.8" />
-    </Page.Background>
-
+    
     <Grid>
-        <Grid.Background>
-            <!--<ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/blue-wallpaper-7.jpg"/>-->
-            <SolidColorBrush Color="#33FFFFFF"
-                             Opacity="0.6" />
-        </Grid.Background>
+       
 
         <!--No-feeds-to-edit content-->
         <Grid Visibility="{x:Bind ViewModel.HasNoFeeds, Mode=OneWay, Converter={StaticResource BooleanToVisibilityConverter}}">
@@ -75,13 +66,7 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <!--Instruction content-->
-            <Grid
-                  HorizontalAlignment="Stretch">
-                <Grid.Background>
-                    <!--<ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/blue-wallpaper-7.jpg"/>-->
-                    <SolidColorBrush Color="#33FFFFFF"
-                                     Opacity="0.8" />
-                </Grid.Background>
+            <Grid HorizontalAlignment="Stretch">
                 <Image Width="140"
                        Height="96"
                        Source="ms-appx:///Assets/icon_noeditfeeds.png"
@@ -93,15 +78,15 @@
                        Margin="24,12"
                        Text="Aw shucks! You have no feeds now."
                        TextWrapping="Wrap"
-                       Foreground="{ThemeResource Foreground100CrimsonBrush}"
-                       Style="{ThemeResource SubtitleTextBlockStyle}" />
+                       Style="{ThemeResource SubtitleTextBlockStyle}" 
+                       />
 
             <Rectangle Grid.Row="2"
                        Margin="24,0.333,24,0"
                        Height="1"
                        HorizontalAlignment="Stretch"
                        VerticalAlignment="Bottom"
-                       Fill="{ThemeResource Border100PaleRoseBrush}" />
+                       Fill="{ThemeResource SystemControlForegroundAccentBrush}" />
 
             <TextBlock Grid.Row="3"
                        Margin="24,24,24,12"
@@ -130,13 +115,10 @@
             </Grid.RowDefinitions>
 
             <controls:PageHeader>
-                <controls:PageHeader.Background>
-                    <ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/blue-wallpaper-7.jpg"/>
-                </controls:PageHeader.Background>
                 <controls:PageHeader.HeaderContent>
                     <TextBlock Text="Edit your feeds"
-                               Foreground="{ThemeResource Foreground100CrimsonBrush}"
-                               Style="{ThemeResource SubtitleTextBlockStyle}" />
+                               Style="{ThemeResource SubtitleTextBlockStyle}" 
+                               FontWeight="Bold"/>
                 </controls:PageHeader.HeaderContent>
             </controls:PageHeader>
 
@@ -144,7 +126,7 @@
                        Margin="24,0"
                        Height="1"
                        HorizontalAlignment="Stretch"
-                       Fill="{ThemeResource Border100PaleRoseBrush}" />
+                       Fill="{ThemeResource SystemControlForegroundAccentBrush}" />
 
             <TextBlock x:Name="EditRSSHelp"
                        Grid.Row="2"
@@ -152,7 +134,6 @@
                        Text="Personalize your views. You can either change a title or delete a RSS feed. You can even arrange your RSS feeds in any order as you like."
                        TextWrapping="Wrap"
                        VerticalAlignment="Top"
-                       Foreground="{ThemeResource Foreground100DimGrayBrush}"
                        Style="{StaticResource CaptionTextBlockStyle}" />
 
             <ListView x:Name="EditFeedsList"
@@ -166,17 +147,14 @@
                       ItemsSource="{x:Bind ViewModel.Feeds, Mode=OneWay}"
                       ItemTemplate="{StaticResource EditFeedsListItemTemplate}"
                       ItemContainerStyle="{StaticResource ListViewItemEditFeed}"
-                      SelectionChanged="{x:Bind SelectionChanged}" >
-                <!--<ListView.Background>
-                    <ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/blue-wallpaper-7.jpg"/>
-                </ListView.Background>-->
+                      SelectionChanged="{x:Bind SelectionChanged}">
             </ListView>
 
             <CommandBar Grid.Row="4">
                 <CommandBar.Background>
-                    <!--<ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/blue-wallpaper-7.jpg"/>-->
-                    <SolidColorBrush Color="#33FFFFFF"
-                                     Opacity="0.8" />
+                    <SolidColorBrush Color="{ThemeResource SystemChromeMediumColor}"
+                                     Opacity="0.1"
+                                     x:Name="changingCommandBarColor"/>
                 </CommandBar.Background>
                 <AppBarButton Icon="Add"
                               Label="Add feed"

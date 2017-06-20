@@ -74,12 +74,12 @@
             <SolidColorBrush x:Key="Background100OffWhiteBrush" Color="{ThemeResource Background100OffWhite}" />
             <SolidColorBrush x:Key="Background60SmokeBrush" Color="{ThemeResource Background60Smoke}" />
             <SolidColorBrush x:Key="Background100CloudBrush" Color="{ThemeResource Background100Cloud}" />
-            <SolidColorBrush x:Key="Background100CrimsonBrush" Color="{ThemeResource Background100Crimson}" />
             <SolidColorBrush x:Key="Background100IndianRedBrush"  Color="Blue" />
             <SolidColorBrush x:Key="Background100SalmonBrush" Color="{ThemeResource Background100Salmon}" />
             <SolidColorBrush x:Key="Background40BlackBrush" Color="{ThemeResource Background40Black}" />
             <SolidColorBrush x:Key="Background20BlackBrush" Color="{ThemeResource Background20Black}" />
-            <SolidColorBrush x:Key="Background60WhiteBrush" Color="{ThemeResource Background60White}" />
+            <SolidColorBrush x:Key="Background60WhiteBrush" Color="{ThemeResource Background60White}" 
+                             Opacity="0.01"/>
             <SolidColorBrush x:Key="Border40SalmonBrush" Color="{ThemeResource Border40Salmon}" />
             <SolidColorBrush x:Key="Border20SalmonBrush" Color="{ThemeResource Border20Salmon}" />
             <SolidColorBrush x:Key="Border100PaleRoseBrush" Color="{ThemeResource Border100PaleRose}" />
@@ -146,7 +146,6 @@
             <SolidColorBrush x:Key="Background100OffWhiteBrush" Color="{ThemeResource Background100OffWhite}"/>
             <SolidColorBrush x:Key="Background60SmokeBrush" Color="{ThemeResource Background60Smoke}"/>
             <SolidColorBrush x:Key="Background100CloudBrush" Color="{ThemeResource Background100Cloud}"/>
-            <SolidColorBrush x:Key="Background100CrimsonBrush" Color="{ThemeResource Background100Crimson}"/>
             <SolidColorBrush x:Key="Background100IndianRedBrush" Color="Blue"/>
             <SolidColorBrush x:Key="Background100SalmonBrush" Color="{ThemeResource Background100Salmon}"/>
             <SolidColorBrush x:Key="Background40BlackBrush" Color="{ThemeResource Background40Black}"/>
@@ -218,7 +217,6 @@
             <SolidColorBrush x:Key="Background100OffWhiteBrush" Color="{ThemeResource Background100OffWhite}" />
             <SolidColorBrush x:Key="Background60SmokeBrush" Color="{ThemeResource Background60Smoke}" />
             <SolidColorBrush x:Key="Background100CloudBrush" Color="{ThemeResource Background100Cloud}" />
-            <SolidColorBrush x:Key="Background100CrimsonBrush" Color="{ThemeResource Background100Crimson}" />
             <SolidColorBrush x:Key="Background100IndianRedBrush" Color="Blue" />
             <SolidColorBrush x:Key="Background100SalmonBrush" Color="{ThemeResource Background100Salmon}" />
             <SolidColorBrush x:Key="Background40BlackBrush" Color="{ThemeResource Background40Black}" />
@@ -281,8 +279,6 @@
                 Value="Center" />
         <Setter Property="Background"
                 Value="Transparent" />
-        <Setter Property="Foreground"
-                Value="{ThemeResource Foreground100Crimson}" />
         <Setter Property="Content"
                 Value="&#xE700;" />
         <Setter Property="AutomationProperties.Name"
@@ -302,7 +298,7 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="LayoutRoot"
                                                                        Storyboard.TargetProperty="(Grid.Background)">
                                             <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{ThemeResource Background100Salmon}" />
+                                                                    Value="{ThemeResource SystemControlHighlightListLowBrush}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         
                                     </Storyboard>
@@ -312,7 +308,7 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="LayoutRoot"
                                                                        Storyboard.TargetProperty="(Grid.Background)">
                                             <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="Blue" />
+                                                                    Value="{ThemeResource SystemControlHighlightListMediumBrush}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
                                                                        Storyboard.TargetProperty="Foreground">
@@ -336,7 +332,7 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="LayoutRoot"
                                                                        Storyboard.TargetProperty="(Grid.Background)">
                                             <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{ThemeResource Background100Salmon}" />
+                                                                    Value="{ThemeResource SystemControlHighlightListLowBrush}" />
                                         </ObjectAnimationUsingKeyFrames>
 
                                     </Storyboard>
@@ -346,7 +342,7 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="LayoutRoot"
                                                                        Storyboard.TargetProperty="(Grid.Background)">
                                             <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="Blue" />
+                                                                    Value="{ThemeResource SystemControlHighlightListMediumBrush}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
                                                                        Storyboard.TargetProperty="Foreground">
@@ -801,7 +797,7 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BorderBackground"
                                                                        Storyboard.TargetProperty="Fill">
                                             <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{ThemeResource Background100CrimsonBrush}" />
+                                                                    Value="{ThemeResource SystemControlForegroundAccentBrush}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BorderBackground"
                                                                        Storyboard.TargetProperty="Stroke">
@@ -825,7 +821,7 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BorderBackground"
                                                                        Storyboard.TargetProperty="Fill">
                                             <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{ThemeResource Background100CrimsonBrush}" />
+                                                                    Value="{ThemeResource SystemControlForegroundAccentBrush}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BorderBackground"
                                                                        Storyboard.TargetProperty="Stroke">
@@ -849,7 +845,7 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BorderBackground"
                                                                        Storyboard.TargetProperty="Fill">
                                             <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{ThemeResource Background100CrimsonBrush}" />
+                                                                    Value="{ThemeResource SystemControlForegroundAccentBrush}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BorderBackground"
                                                                        Storyboard.TargetProperty="Stroke">
@@ -1031,7 +1027,7 @@
         <Setter Property="Background"
                 Value="Transparent" />
         <Setter Property="Foreground"
-                Value="{ThemeResource Foreground100SalmonBrush}" />
+                Value="{ThemeResource SystemControlBackgroundAccentBrush}" />
         <Setter Property="BorderBrush"
                 Value="{ThemeResource SystemControlForegroundTransparentBrush}" />
         <Setter Property="BorderThickness"
@@ -1067,7 +1063,7 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground"
                                                                        Storyboard.TargetName="ContentPresenter">
                                             <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{ThemeResource Foreground100CrimsonBrush}" />
+                                                                    Value="{ThemeResource SystemControlForegroundAccentBrush}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <PointerUpThemeAnimation Storyboard.TargetName="RootGrid" />
                                     </Storyboard>
@@ -1109,7 +1105,7 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground"
                                                                        Storyboard.TargetName="ContentPresenter">
                                             <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{ThemeResource Foreground100CrimsonBrush}" />
+                                                                    Value="{ThemeResource SystemControlForegroundAccentBrush}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="FontSize"
                                                                        Storyboard.TargetName="ContentPresenter">
@@ -1130,7 +1126,7 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground"
                                                                        Storyboard.TargetName="ContentPresenter">
                                             <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{ThemeResource Foreground100CrimsonBrush}" />
+                                                                    Value="{ThemeResource SystemControlForegroundAccentBrush}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="FontSize"
                                                                        Storyboard.TargetName="ContentPresenter">
@@ -1210,7 +1206,7 @@
         <Setter Property="Background"
                 Value="Transparent" />
         <Setter Property="Foreground"
-                Value="{ThemeResource Foreground80BlackBrush}" />
+                Value="{ThemeResource DefaultTextForegroundThemeBrush}" />
         <Setter Property="TabNavigation"
                 Value="Local" />
         <Setter Property="IsHoldingEnabled"
@@ -1241,7 +1237,7 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="MultiSelectSquare"
                                                                        Storyboard.TargetProperty="BorderBrush">
                                             <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{ThemeResource Foreground80BlackBrush}" />
+                                                                    Value="{ThemeResource DefaultTextForegroundThemeBrush}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter" />
                                     </Storyboard>
@@ -1252,12 +1248,12 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentBorder"
                                                                        Storyboard.TargetProperty="Background">
                                             <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{ThemeResource Background100SalmonBrush}" />
+                                                                    Value="{ThemeResource SystemControlBackgroundAccentBrush}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
                                                                        Storyboard.TargetProperty="Foreground">
                                             <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{ThemeResource Foreground100BlackBrush}" />
+                                                                    Value="{ThemeResource DefaultTextForegroundThemeBrush}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter" />
                                     </Storyboard>
@@ -1291,13 +1287,13 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="MultiSelectSquare"
                                                                        Storyboard.TargetProperty="BorderBrush">
                                             <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{ThemeResource Foreground100CrimsonBrush}" />
+                                                                    Value="{ThemeResource SystemControlForegroundAccentBrush}" />
                                         </ObjectAnimationUsingKeyFrames>
 
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
                                                                        Storyboard.TargetProperty="Foreground">
                                             <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{ThemeResource Foreground100BlackBrush}" />
+                                                                    Value="{ThemeResource DefaultTextForegroundThemeBrush}" />
                                         </ObjectAnimationUsingKeyFrames>
 
                                         <DoubleAnimation Storyboard.TargetName="MultiSelectCheck"
@@ -1314,7 +1310,7 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="MultiSelectSquare"
                                                                        Storyboard.TargetProperty="Background">
                                             <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{ThemeResource Background100CrimsonBrush}" />
+                                                                    Value="{ThemeResource SystemControlForegroundAccentBrush}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter" />
                                     </Storyboard>
@@ -1342,19 +1338,19 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="MultiSelectCheck"
                                                                        Storyboard.TargetProperty="Foreground">
                                             <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{ThemeResource Foreground100SalmonBrush}" />
+                                                                    Value="{ThemeResource SystemControlBackgroundAccentBrush}" />
                                         </ObjectAnimationUsingKeyFrames>
 
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
                                                                        Storyboard.TargetProperty="Foreground">
                                             <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{ThemeResource Foreground100BlackBrush}" />
+                                                                    Value="{ThemeResource DefaultTextForegroundThemeBrush}" />
                                         </ObjectAnimationUsingKeyFrames>
 
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentBorder"
                                                                        Storyboard.TargetProperty="Background">
                                             <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{ThemeResource Background100SalmonBrush}" />
+                                                                    Value="{ThemeResource SystemControlBackgroundAccentBrush}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter" />
                                     </Storyboard>
@@ -1599,7 +1595,7 @@
                         <Border x:Name="MultiSelectSquare"
                                 Margin="12,0,0,0" Width="20" Height="20"
                                 VerticalAlignment="Center" HorizontalAlignment="Left" Visibility="Collapsed"
-                                BorderThickness="2" BorderBrush="{ThemeResource Foreground80BlackBrush}">
+                                BorderThickness="2" BorderBrush="{ThemeResource DefaultTextForegroundThemeBrush}">
                             <Border.Clip>
                                 <RectangleGeometry Rect="0,0,20,20">
                                     <RectangleGeometry.Transform>
@@ -1613,14 +1609,14 @@
                             <FontIcon x:Name="MultiSelectCheck"
                                       Glyph="" FontSize="16"
                                       Opacity="0" Visibility="Collapsed"
-                                      Foreground="{ThemeResource Foreground80BlackBrush}"
+                                      Foreground="{ThemeResource DefaultTextForegroundThemeBrush}"
                                       FontFamily="{ThemeResource SymbolThemeFontFamily}" />
                         </Border>
                         <TextBlock x:Name="MultiArrangeOverlayText"
                                    Grid.ColumnSpan="2"
                                    Margin="18,9,0,0"
                                    Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.DragItemsCount}"
-                                   Foreground="{ThemeResource Foreground80BlackBrush}"
+                                   Foreground="{ThemeResource DefaultTextForegroundThemeBrush}"
                                    FontFamily="{ThemeResource ContentControlThemeFontFamily}"
                                    Opacity="0" FontSize="26.667"
                                    TextWrapping="Wrap" TextTrimming="WordEllipsis"
@@ -1740,7 +1736,7 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BorderBackground"
                                                                        Storyboard.TargetProperty="Fill">
                                             <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{ThemeResource Background100SalmonBrush}" />
+                                                                    Value="{ThemeResource SystemControlBackgroundAccentBrush}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
                                                                        Storyboard.TargetProperty="Background">
@@ -1952,7 +1948,7 @@
                                    HorizontalAlignment="Left" 
                                    IsHitTestVisible="False"
                                    Opacity="0"
-                                   Fill="{ThemeResource Background100CrimsonBrush}" />
+                                   Fill="{ThemeResource SystemControlForegroundAccentBrush}" />
                         
                         <Grid x:Name="ContentPresenterGrid" Margin="0,0,0,0" Background="Transparent">
                             <Grid.RenderTransform>
@@ -2033,7 +2029,7 @@
             <Setter Property="BorderBrush"
                     Value="{ThemeResource SystemControlForegroundChromeDisabledLowBrush}" />
             <Setter Property="SelectionHighlightColor"
-                    Value="{ThemeResource Foreground100Crimson}" />
+                    Value="{ThemeResource SystemControlForegroundAccentBrush}" />
             <Setter Property="BorderThickness"
                     Value="0,0,0,1" />
             <Setter Property="FontFamily"
@@ -2074,7 +2070,7 @@
                                                                     <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground"
                                                                                                    Storyboard.TargetName="GlyphElement">
                                                                         <DiscreteObjectKeyFrame KeyTime="0"
-                                                                                                Value="{ThemeResource Foreground100CrimsonBrush}" />
+                                                                                                Value="{ThemeResource SystemControlForegroundAccentBrush}" />
                                                                     </ObjectAnimationUsingKeyFrames>
                                                                 </Storyboard>
                                                             </VisualState>
@@ -2187,7 +2183,7 @@
                                             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush"
                                                                            Storyboard.TargetName="BorderElement">
                                                 <DiscreteObjectKeyFrame KeyTime="0"
-                                                                        Value="{ThemeResource Foreground100Crimson}" />
+                                                                        Value="{ThemeResource SystemControlForegroundAccentBrush}" />
                                             </ObjectAnimationUsingKeyFrames>
                                             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground"
                                                                            Storyboard.TargetName="PlaceholderTextContentPresenter">
@@ -2323,7 +2319,7 @@
     <Style x:Key="ProgressBarStyle1"
                TargetType="ProgressBar">
             <Setter Property="Foreground"
-                    Value="Blue" />
+                    Value="{ThemeResource SystemControlForegroundAccentBrush}" />
             <Setter Property="Background"
                     Value="{ThemeResource SystemControlBackgroundBaseLowBrush}" />
             <Setter Property="BorderThickness"

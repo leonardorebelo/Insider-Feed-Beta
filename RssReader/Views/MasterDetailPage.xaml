@@ -69,14 +69,8 @@
                               Width="*" />
         </Grid.ColumnDefinitions>
 
-        <Frame x:Name="MasterFrame" >
-            <Frame.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="Black" Offset="0"/>
-                    <GradientStop Color="#FF1FA2EE" Offset="1"/>
-                </LinearGradientBrush>
-            </Frame.Background>
-            
+        
+        <Frame x:Name="MasterFrame">
         </Frame>
 
         <ProgressBar x:Name="LoadingProgressBar"

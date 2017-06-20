@@ -26,6 +26,10 @@ using RssReader.ViewModels;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Navigation;
+using System;
+
+
 
 namespace RssReader.Views
 {
@@ -34,6 +38,7 @@ namespace RssReader.Views
     /// </summary>
     public sealed partial class FeedView : Page
     {
+       
         /// <summary>
         /// Gets the MainViewModel used by the app. 
         /// </summary>
@@ -78,5 +83,23 @@ namespace RssReader.Views
         private void ToggleButton_Toggled(object sender, RoutedEventArgs e) =>
             ViewModel.SyncFavoritesFeed(((ToggleButton)sender).DataContext as ArticleViewModel);
 
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (App.userNeedsUpdateInfo)
+            {
+                whatsNewMessage.CloseButtonText = "OK";
+                await whatsNewMessage.ShowAsync();
+                App.userNeedsUpdateInfo = false;
+            }
+            
+        }
+
+        private void hideWhatsNewButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
+      
     }
 }

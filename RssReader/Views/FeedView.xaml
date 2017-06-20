@@ -32,14 +32,21 @@
       xmlns:vm="using:RssReader.ViewModels"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      mc:Ignorable="d">
+      mc:Ignorable="d"
+      Loaded="Page_Loaded">
 
     <Page.Resources>
+        
         <DataTemplate x:Key="ArticleItemViewTemplate"
                       x:DataType="vm:ArticleViewModel">
+            
             <Grid>
                 <Grid>
-                    <StackPanel Background="{ThemeResource Background60WhiteBrush}">
+                    <StackPanel>
+                        <StackPanel.Background>
+                            <SolidColorBrush Color="White"
+                                             Opacity="0.2" />
+                        </StackPanel.Background>
                         <Grid Padding="12,12,12,0">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
@@ -49,7 +56,9 @@
                             <TextBlock Grid.Row="0"
                                        Text="{x:Bind PublishedDateFormatted}"
                                        TextWrapping="NoWrap"
-                                       Style="{StaticResource CaptionTextBlockStyle}" Foreground="#FF18ADD8" />
+                                       Style="{StaticResource CaptionTextBlockStyle}"
+                                      FontWeight="SemiBold"
+                                       Foreground="{ThemeResource Foreground100BlackBrush}"/>
 
                             <TextBlock Grid.Row="1"
                                        Margin="0,10,0,0"
@@ -69,11 +78,6 @@
                                        Foreground="{ThemeResource Foreground100BlackBrush}"
                                        Style="{StaticResource BodyTextBlockStyle}" />
                         </Grid>
-                        <Rectangle x:Name="BorderBottom"
-                                   Grid.Row="2"
-                                   Height="1"
-                                   HorizontalAlignment="Stretch"
-                                   VerticalAlignment="Bottom" Fill="#33179CDA" />
                     </StackPanel>
                 </Grid>
                 <ToggleButton Content="&#xE1CE;"
@@ -81,14 +85,40 @@
                               IsChecked="{x:Bind IsStarred, Mode=TwoWay}"
                               IsThreeState="False"
                               HorizontalAlignment="Right"
-                              Style="{StaticResource ToggleFavorite}" Foreground="#FF0E96B4" />
+                              Style="{StaticResource ToggleFavorite}" 
+                              Foreground="{ThemeResource SystemControlForegroundAccentBrush}"/>
             </Grid>
         </DataTemplate>
     </Page.Resources>
 
-    <Grid
-          Padding="0,0,0,12" Background="#FFB6C0CB">
-
+    <Grid>
+        
+        <ContentDialog Name="whatsNewMessage"
+                       Title="What's New"
+                       BorderBrush="{x:Null}"
+                       BorderThickness="0,0,0,0">
+            <ContentDialog.Background>
+                <SolidColorBrush Color="{ThemeResource SystemChromeMediumColor}" Opacity="0.6"/>
+            </ContentDialog.Background>
+            <ContentDialog.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Margin"
+                            Value="5" />
+                    <Setter Property="TextWrapping"
+                            Value="WrapWholeWords" />
+                </Style>
+            </ContentDialog.Resources>
+            <ContentDialog.Content>
+                <Grid>
+                    <StackPanel>
+                        <!-->Write what's new in every update here<-->
+                        <TextBlock Text="* Updated with new fluent design by Colin Kiama" />
+                        <TextBlock Text="(Make sure to search for more designs and apps by him)"
+                                   Margin="5,-2.5,5,0" />
+                    </StackPanel>
+                </Grid>
+            </ContentDialog.Content>
+        </ContentDialog>
         <!--Bad feed content-->
         <Grid x:Name="FeedErrorMessage"
               x:DeferLoadStrategy="Lazy"
@@ -100,8 +130,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <Grid Background="{ThemeResource Background100PastelOrangeBrush}"
-                  HorizontalAlignment="Stretch">
+            <Grid HorizontalAlignment="Stretch">
                 <Image Width="140"
                        Height="96"
                        Source="ms-appx:///Assets/icon_feederror1.png"
@@ -114,11 +143,7 @@
                        TextWrapping="Wrap"
                        Style="{ThemeResource SubtitleTextBlockStyle}" Foreground="#FF18A4D8" />
 
-            <Rectangle Grid.Row="2"
-                       Margin="24,0.333,24,0"
-                       Height="1"
-                       HorizontalAlignment="Stretch"
-                       VerticalAlignment="Bottom" Fill="#FF1FAAD3" />
+           
 
             <TextBlock Grid.Row="3"
                        Margin="24,24,24,12"
@@ -169,8 +194,7 @@
                     <RowDefinition Height="Auto" />
 
                 </Grid.RowDefinitions>
-                <Grid Background="{ThemeResource Background100OceanGrayBrush}"
-                      HorizontalAlignment="Stretch">
+                <Grid HorizontalAlignment="Stretch">
                     <Image Width="140"
                            Height="96"
                            Source="ms-appx:///Assets/icon_nofavs.png"
@@ -181,20 +205,16 @@
                            Margin="24,12"
                            Text="No favorites yet!"
                            TextWrapping="Wrap"
-                           Style="{ThemeResource SubtitleTextBlockStyle}" Foreground="#FF198ED1" />
+                           Style="{ThemeResource SubtitleTextBlockStyle}"
+                           FontWeight="SemiBold"/>
 
-                <Rectangle Grid.Row="2"
-                           Margin="24,0.333,24,0"
-                           Height="1"
-                           HorizontalAlignment="Stretch"
-                           VerticalAlignment="Bottom" Fill="#FF1A83BF" />
+                
 
                 <TextBlock Grid.Row="3"
                            Margin="24,24,24,12"
                            Text="You can favorite an article by clicking or tapping the star. When you're ready to remove it, simply click or tap the star again."
                            TextWrapping="Wrap"
-                           Foreground="{ThemeResource Foreground100DimGrayBrush}"
-                           Style="{ThemeResource BodyTextBlockStyle}" SelectionHighlightColor="#FF29A7CC" />
+                           Style="{ThemeResource BodyTextBlockStyle}"  />
 
             </Grid>
 
@@ -212,14 +232,12 @@
                                    HorizontalAlignment="Left"
                                    TextWrapping="NoWrap"
                                    TextTrimming="CharacterEllipsis"
-                                   Style="{ThemeResource SubtitleTextBlockStyle}" Foreground="#FF13AED1" />
+                                   Style="{ThemeResource SubtitleTextBlockStyle}"
+                                   FontWeight="Bold"/>
                     </controls:PageHeader.HeaderContent>
                 </controls:PageHeader>
 
-                <Rectangle Margin="24,0.333,24,0"
-                           Height="1"
-                           HorizontalAlignment="Stretch"
-                           VerticalAlignment="Bottom" Fill="#FF0D8CE4" d:IsHidden="True" />
+               
 
                 <ProgressBar Grid.Row="1"
                              Margin="24,8"
@@ -247,7 +265,8 @@
                                HorizontalAlignment="Left"
                                TextWrapping="NoWrap"
                                TextTrimming="CharacterEllipsis"
-                               Style="{ThemeResource SubtitleTextBlockStyle}" Foreground="#FF2F80C3" />
+                               Style="{ThemeResource SubtitleTextBlockStyle}"
+                               FontWeight="Bold"/>
                 </controls:PageHeader.HeaderContent>
             </controls:PageHeader>
 
@@ -268,11 +287,6 @@
                            Margin="48,10,12,10" d:IsHidden="True" />
             </Grid>
 
-            <Rectangle Visibility="{x:Bind ViewModel.CurrentFeed.IsInErrorAndNotEmpty, Mode=OneWay, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=Reverse}"
-                       Margin="24,0.333,24,0"
-                       Grid.Row="2"
-                       Height="1"
-                       HorizontalAlignment="Stretch" Fill="#FF0068FF" d:IsHidden="True" />
 
             <ProgressBar Visibility="{x:Bind ViewModel.CurrentFeed.IsLoadingAndNotEmpty, Mode=OneWay, Converter={StaticResource BooleanToVisibilityConverter}}"
                          Margin="24,1,24,0"

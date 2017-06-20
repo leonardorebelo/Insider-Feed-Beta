@@ -31,6 +31,7 @@ using Windows.Foundation;
 using Windows.UI;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
 namespace RssReader
@@ -40,6 +41,9 @@ namespace RssReader
     /// </summary>
     sealed partial class App : Application
     {
+        public static AppShell shell;
+        public static Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+        public static bool userNeedsUpdateInfo = false;
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -62,19 +66,42 @@ namespace RssReader
             titleBar.ButtonBackgroundColor = Colors.Transparent;
             titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
 
-            AppShell shell = Window.Current.Content as AppShell;
+             App.shell = Window.Current.Content as AppShell;
 
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active
-            if (shell == null)
+            if (App.shell == null)
             {
-                // Create a AppShell to act as the navigation context and navigate to the first page
-                shell = new AppShell();
+                PackageVersion pv = Package.Current.Id.Version;
+                object currentAppVersion = localSettings.Values["currentAppVersion"];
+                string applicationVersion = $"{pv.Major}.{pv.Minor}.{pv.Build}.{pv.Revision}";
+                if (currentAppVersion == null)
+                {
+
+                    localSettings.Values["currentAppVersion"] = applicationVersion;
+                    userNeedsUpdateInfo = true;
+                }
+                else if (currentAppVersion.ToString() != applicationVersion)
+                {
+                    localSettings.Values["currentAppVersion"] = applicationVersion;
+                    userNeedsUpdateInfo = true;
+                }
+                    // Create a AppShell to act as the navigation context and navigate to the first page
+                    App.shell = new AppShell();
 
                 // Set the default language
-                shell.Language = Windows.Globalization.ApplicationLanguages.Languages[0];
+                App.shell.Language = Windows.Globalization.ApplicationLanguages.Languages[0];
 
-                shell.AppFrame.NavigationFailed += OnNavigationFailed;
+                App.shell.AppFrame.NavigationFailed += OnNavigationFailed;
+
+                if (e.PreviousExecutionState != ApplicationExecutionState.Running)
+                {
+                    bool loadState = (e.PreviousExecutionState == ApplicationExecutionState.Terminated);
+                    ExtendedSplash extendedSplash = new ExtendedSplash(e.SplashScreen, loadState);
+                    App.shell.Content = extendedSplash;
+                    Window.Current.Content = shell;
+                }
+
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
@@ -96,6 +123,40 @@ namespace RssReader
             Window.Current.Activate();
 
             ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(320, 200));
+
+            //Frame rootFrame = Window.Current.Content as Frame;
+
+            //// Do not repeat app initialization when the Window already has content,
+            //// just ensure that the window is active
+            //if (rootFrame == null)
+            //{
+            //    // Create a Frame to act as the navigation context and navigate to the first page
+            //    rootFrame = new Frame();
+            //    // Set the default language
+            //    rootFrame.Language = Windows.Globalization.ApplicationLanguages.Languages[0];
+
+            //    rootFrame.NavigationFailed += OnNavigationFailed;
+
+            //    //  Display an extended splash screen if app was not previously running.
+            //    if (e.PreviousExecutionState != ApplicationExecutionState.Running)
+            //    {
+            //        bool loadState = (e.PreviousExecutionState == ApplicationExecutionState.Terminated);
+            //        ExtendedSplash extendedSplash = new ExtendedSplash(e.SplashScreen, loadState);
+            //        rootFrame.Content = extendedSplash;
+            //        Window.Current.Content = rootFrame;
+            //    }
+            //}
+
+            //if (rootFrame.Content == null)
+            //{
+            //    // When the navigation stack isn't restored navigate to the first page,
+            //    // configuring the new page by passing required information as a navigation
+            //    // parameter
+            //    rootFrame.Navigate(typeof(AppShell), e.Arguments);
+            //}
+            //// Ensure the current window is active
+            //Window.Current.Activate();
+
         }
 
         /// <summary>

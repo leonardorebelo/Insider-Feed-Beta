@@ -139,6 +139,8 @@ namespace RssReader.Views
                 e.Handled = true;
             }
         }
+
+
     }
 }
 
